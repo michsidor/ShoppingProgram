@@ -20,16 +20,17 @@ Projekt ten może być wykorzystywany w różnych scenariuszach, takich jak:
 
 * Rozpoznawanie twarzy oparte na reprezentacji generatywnej - jest to najnowocześniejsza metoda rozpoznawania twarzy, polegająca na generowaniu reprezentacji twarzy za pomocą generatywnych sieci neuronowych. Mocną stroną tego rozwiązania jest zdolność do rozpoznawania twarzy nietypowych i braku potrzeby dużej ilości danych treningowych, jednak jego słabą stroną jest złożoność i potrzeba dużej mocy obliczeniowej.
 
-# Opis wybranej koncepcji:
-Jedną z popularnych koncepcji rozwiązania problemu rozpoznawania twarzy z zastosowaniem konwolucyjnych sieci neuronowych jest użycie tzw. sieci konwolucyjnej (CNN) opartej na architekturze ResNet.
-Dane potrzebne do tego rozwiązania to zbiór zdjęć twarzy osoby, którą chcemy rozpoznać oraz zbiór zdjęć twarzy osób, które będą stanowić "przeciwników" dla modelu. Zbiory te mogą być pobierane z publicznie dostępnych zbiorów danych lub przygotowywane we własnym zakresie. W naszym przypadku będą to samodzielnie robione zdjęcia jednej z osób (Kubusia :) ).
-Wyjście algorytmu będzie przyjmować formę identyfikatora osoby lub prawdopodobieństwa przynależności do danej osoby.
-Metoda zastosowana w tym rozwiązaniu polega na wykorzystaniu konwolucyjnych sieci neuronowych do wykrywania i analizy cech twarzy, a następnie porównywania ich z cechami twarzy znajdującymi się w bazie danych.
-Aby zrealizować tę metodę w rzeczywistym świecie, potrzebny jest komputer z odpowiednią mocą obliczeniową oraz zestaw danych treningowych i testowych.
-Procedura testowania rozwiązania polega na przeprowadzeniu testów na różnych zbiorach danych i porównaniu wyników z oczekiwanymi wynikami. Ewentualne problemy mogą pojawić się przy niedostatecznej liczbie danych treningowych, złej jakości danych lub nieodpowiedniej architekturze sieci neuronowej.
+# Opis wybranej koncepcji </br>
+Naszymi podstawowymi rzeczami do opracowania bylo: 
 
-# Moj opis koncepcji </br>
-Naszymi podstawowymi rzeczami do opracowania bylo:
 * wytrenowanie modelu do klasyfikacji twarzy
-* przystosowanie modelu do pracy z kamera
-Jedną z popularnych koncepcji rozwiązania problemu rozpoznawania twarzy z zastosowaniem konwolucyjnych sieci neuronowych jest użycie tzw. sieci konwolucyjnej (CNN). Przyblizony obraz CNN wyglada nastepująco:
+* przystosowanie modelu do pracy z kamera </br>
+
+Jedną z popularnych koncepcji rozwiązania problemu rozpoznawania twarzy z zastosowaniem konwolucyjnych sieci neuronowych jest użycie tzw. sieci konwolucyjnej (CNN). 
+W CNN naurony sa ułożone w postaci macierzy(nazywanej tensorem) oraz są połączone z niewielką liczbą neuronów warstwy poprzedniej, a więc warstwy nie są w pełni połączone. Najważniejszym pojęciem w tym zadaniu jest Transfer Learning. Jest to proces wykorzystania wstepnie wytrenowanego modelu do wlasnego zadania, poniewaz zbudowanie klasyfikatora twarzy od podstaw jest bardzo trudne (my w tym celu wykorzystalismy TensorFlow). Nasz model sklada się z kilku warst:
+* Warstw konwolucyjnych, które służą do wykrywania cech twarzy na obrazie.</br>
+* Warstwy max pooling, która służy do zmniejszenia rozmiaru obrazu.
+* Warstw fully connected, które służą do klasyfikacji obrazu jako twarz lub brak twarzy.</br>
+
+W celu przetwarzania obrazów skorzystaliśmy z biblioteki OpenCV. Dane potrzebne do tego rozwiązania to zbiór zdjęć twarzy osoby, którą chcemy rozpoznać oraz zbiór zdjęć twarzy osób, które będą stanowić "przeciwników" dla modelu. W naszym przypadku są to samodzielnie robione zdjęcia 5 osób. Aby zwiekszyc skutecznosc modelu skorzystalismy z argumentacji danych, czyli procesu sztucznego zwiększania rozmiaru zbioru danych poprzez zastosowanie pewnych przekształceń do oryginalnych obrazów. Na przykład, możemy użyć poziomego i pionowego odbicia, niewielkiego obrotu lub powiększenia, inwersji kolorów itp.
+Dzięki tym wszystkim zabiegom możemy wykrywać i analizować cechy twarzy, a następnie porównywać ich z cechami twarzy znajdującymi się w bazie danych.
