@@ -28,3 +28,8 @@ Metoda zastosowana w tym rozwiązaniu polega na wykorzystaniu konwolucyjnych sie
 Aby zrealizować tę metodę w rzeczywistym świecie, potrzebny jest komputer z odpowiednią mocą obliczeniową oraz zestaw danych treningowych i testowych.
 Procedura testowania rozwiązania polega na przeprowadzeniu testów na różnych zbiorach danych i porównaniu wyników z oczekiwanymi wynikami. Ewentualne problemy mogą pojawić się przy niedostatecznej liczbie danych treningowych, złej jakości danych lub nieodpowiedniej architekturze sieci neuronowej.
 
+# Moj opis koncepcji </br>
+Naszymi podstawowymi rzeczami do opracowania bylo:
+* wytrenowanie modelu do klasyfikacji twarzy
+* przystosowanie modelu do pracy z kamera
+Jedną z popularnych koncepcji rozwiązania problemu rozpoznawania twarzy z zastosowaniem konwolucyjnych sieci neuronowych jest użycie tzw. sieci konwolucyjnej (CNN). Przyblizony obraz CNN wyglada nastepująco:
